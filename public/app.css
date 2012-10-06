@@ -64,6 +64,10 @@ div {
   height: 80px;
 }
 
+input #option {
+  width: 20px;
+}
+
 /*
 * {
   outline: 1px solid green;
