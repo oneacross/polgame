@@ -9,3 +9,7 @@ get '/game.json' do
   content_type :json
   JSON.parse(db.get('game'))
 end
+
+get '/game' do
+  erb :game
+end
