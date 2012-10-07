@@ -38,8 +38,23 @@ photos = {
     :height => 242,
     :width => 170
   },
+  4 => { # Jim Lehrer
+    :url => "http://www.pbs.org/newshour/aboutus/images/photo_bio_lehrer.jpg",
+    :height => 242,
+    :width => 170
+  },
   5 => { # Clint Eastwood
     :url => "http://www.newsmax.com/Newsmax/files/1a/1a81ded4-e973-42ee-9079-85da4547dada.jpg",
+    :height => 242,
+    :width => 170
+  },
+  6 => { # Bill Clinton
+    :url => "http://www.florencedailynews.com/wp-content/uploads/2012/09/bill-clinton-picture.jpg",
+    :height => 242,
+    :width => 170
+  },
+  7 => { # Paul Ryan
+    :url => "http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paul_Ryan_official_portrait.jpg/220px-Paul_Ryan_official_portrait.jpg",
     :height => 242,
     :width => 170
   },
