@@ -20,8 +20,16 @@ $(function($) {
             // Fill out the game info.
             this.$("#quote").text(model.get('quote')['text']);
 
+            // Distinguish correct from incorrect.
             this.$("#left_option > img").attr("src", model.get('left_speaker')['url']);
             this.$("#right_option > img").attr("src", right_img_url);
+
+            if (model.get('left_speaker')['correct']) {
+              this.$("#left_option > img").addClass('correct');
+            }
+            else {
+              this.$("#right_option > img").addClass('correct');
+            }
         }
     });
 });
