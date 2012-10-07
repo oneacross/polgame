@@ -31,6 +31,11 @@ get '/game.json' do
   # Randomly pick one
   game_quote = quotes['objects'].sample()
 
+  # Shorten the quote to 300 chars.
+  if game_quote['text'].length() > 300
+    game_quote['text'] = "#{game_quote['text'][0, 300]} ..."
+  end
+
   speaker = Speaker.get_speaker(db, game_quote['speaker']['id'])
   wrong_speaker = Speaker.get_wrong_speaker(db, game_quote['speaker']['id'])
 
