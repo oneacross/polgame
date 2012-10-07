@@ -36,10 +36,14 @@ get '/game.json' do
     game_quote['text'] = "#{game_quote['text'][0, 300]} ..."
   end
 
-  speaker = Speaker.get_speaker(db, game_quote['speaker']['id'])
+  correct_speaker = Speaker.get_speaker(db, game_quote['speaker']['id'])
   wrong_speaker = Speaker.get_wrong_speaker(db, game_quote['speaker']['id'])
 
-  game = WhoSaidItGame.new(game_quote, speaker, wrong_speaker)
+  speakers = [correct_speaker, wrong_speaker].shuffle()
+  left_speaker = speakers[0]
+  right_speaker = speakers[1]
+
+  game = WhoSaidItGame.new(game_quote, left_speaker, right_speaker)
 
   game.to_json()
 end

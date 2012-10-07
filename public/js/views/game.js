@@ -13,15 +13,15 @@ $(function($) {
 
         start_game: function(model, resp) {
             // Defaults
-            var wrong_speaker_img_url = model.get('wrong_speaker')['url'] || "http://leslycorazon.wikispaces.com/file/view/head-silhouette-with-question-mark.png";
-            var speaker_width = model.get('speaker')['width'];
-            var speaker_height = model.get('speaker')['height'];
+            var right_img_url = model.get('right_speaker')['url'] || "http://leslycorazon.wikispaces.com/file/view/head-silhouette-with-question-mark.png";
+            var speaker_width = model.get('left_speaker')['width'];
+            var speaker_height = model.get('left_speaker')['height'];
 
             // Fill out the game info.
             this.$("#quote").text(model.get('quote')['text']);
 
-            this.$("#left_option > img").attr("src", model.get('speaker')['url']);
-            this.$("#right_option > img").attr("src", wrong_speaker_img_url);
+            this.$("#left_option > img").attr("src", model.get('left_speaker')['url']);
+            this.$("#right_option > img").attr("src", right_img_url);
         }
     });
 });

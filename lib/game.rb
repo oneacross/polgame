@@ -1,12 +1,12 @@
 
 class WhoSaidItGame
 
-  def initialize(quote, speaker, wrong_speaker)
+  def initialize(quote, left_speaker, right_speaker)
     @game = {
       #:quote_id => quote['id']
       :quote => quote,
-      :speaker => speaker,
-      :wrong_speaker => wrong_speaker
+      :left_speaker => left_speaker,
+      :right_speaker => right_speaker
     }
   end
 
