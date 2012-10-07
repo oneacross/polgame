@@ -13,10 +13,12 @@ require 'game'
 class WaPoQuoteApi
   include HTTParty
 
-  def get_50_quotes()
-    response = self.class.get("http://api.washingtonpost.com/politics/transcripts/api/v1/statement/?key=#{ENV['WAPO_API_KEY']}&limit=20")
+  def get_quotes(count=50)
+    response = self.class.get("http://api.washingtonpost.com/politics/transcripts/api/v1/statement/?key=#{ENV['WAPO_API_KEY']}&limit=#{count}")
   end
 end
+
+NUMBER_OF_QUOTES = 100
 
 # Hack!
 speakers_db = [
@@ -29,15 +31,23 @@ speakers_db = [
   {"wapo_api" => 4,"first_name" => "Paul","last_name"=>"Ryan","party"=>"Republican","url"=>"http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paul_Ryan_official_portrait.jpg/220px-Paul_Ryan_official_portrait.jpg","width"=>170,"height"=>242}
 ]
 
+cached_results = []
+
 get '/game.json' do
   content_type :json
 
-  # Get the last 50 quotes from the API
-  wapo_quotes = WaPoQuoteApi.new()
-  quotes = wapo_quotes.get_50_quotes() 
+  if (cached_results.empty?)
+    # Get the last 50 quotes from the API
+    wapo_quotes = WaPoQuoteApi.new()
+    quotes = wapo_quotes.get_quotes(NUMBER_OF_QUOTES)
 
-  # Randomly pick one
-  game_quote = quotes['objects'].sample()
+    # Randomly pick one
+    game_quote = quotes['objects'].sample()
+
+    cached_results = quotes['objects']
+  else
+    game_quote = cached_results.sample()
+  end
 
   # Shorten the quote to 300 chars.
   if game_quote['text'].length() > 300
