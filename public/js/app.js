@@ -22,10 +22,10 @@ $(document).ready(function() {
     // A speaker was selected!
 
     if ($(this).hasClass("correct")) {
-      $("#result").text("Right!");
+      $("#result").text("You got it!");
     }
     else {
-      $("#result").text("Wrong!");
+      $("#result").text("Sorry, it was the other guy.");
     }
   });
 
