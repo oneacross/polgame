@@ -1,5 +1,5 @@
 
-class FactCheckGame
+class WhoSaidItGame
 
   def initialize(quote)
     @quote = quote
