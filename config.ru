@@ -1,2 +1,2 @@
-require './hello'
+require './polgame'
 run Sinatra::Application
