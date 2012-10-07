@@ -46,18 +46,33 @@ img {
   max-height: 100%;
 }
 
-#left_option, #right_option {
+/*
+.img-row {
+  clear: both;
+  text-align: center;
+  margin: 0 auto;
+}
+*/
+
+#option_box {
   height: 250px;
 }
 
+#left_option, #right_option {
+  padding: 10px;
+}
+
 #left_option {
-  float: left;
-  padding-left: 30%;
+  margin-left: 30%;
 }
 
 #right_option {
-  float: right;
-  padding-right: 30%;
+  margin-right: 30%;
+}
+
+.hover {
+  background: yellow;
+  border: solid 1px #999;
 }
 
 /*
