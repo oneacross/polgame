@@ -28,23 +28,19 @@ class Speaker
     end
 
     # API
-    def self.get_speaker(db, speaker_id)
-      speakers = db.smembers('speakers')
-
+    def self.get_speaker(speakers, speaker_id)
       speaker = speakers.select do |spkr|
-        JSON.parse(spkr)['wapo_api'] == speaker_id
+        spkr['wapo_api'] == speaker_id.to_i
       end.first
 
-      JSON.parse(speaker)
+      speaker
     end
 
-    def self.get_wrong_speaker(db, speaker_id)
-      speakers = db.smembers('speakers')
-
+    def self.get_wrong_speaker(speakers, speaker_id)
       speaker = speakers.select do |spkr|
-        JSON.parse(spkr)['wapo_api'] != speaker_id
+        spkr['wapo_api'] != speaker_id.to_i
       end.sample
 
-      JSON.parse(speaker)
+      speaker
     end
 end
