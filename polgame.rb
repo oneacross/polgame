@@ -14,7 +14,7 @@ class WaPoQuoteApi
   include HTTParty
 
   def get_50_quotes()
-    response = self.class.get("http://api.washingtonpost.com/politics/transcripts/api/v1/statement/?key=#{ENV['WAPO_API_KEY']}&limit=50")
+    response = self.class.get("http://api.washingtonpost.com/politics/transcripts/api/v1/statement/?key=#{ENV['WAPO_API_KEY']}&limit=20")
   end
 end
 
