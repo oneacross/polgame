@@ -2,6 +2,8 @@ require "json"
 
 class Quote
 
+  attr_accessor :wapo_speaker_id
+
   def initialize(wapo_rsp)
     @id = wapo_rsp['id']
     @text = wapo_rsp['quote']
@@ -30,7 +32,9 @@ class Quote
 
     quote = quotes.select do |q|
       JSON.parse(q)['id'] == fact_check_id
-    end
+    end.first
+
+    JSON.parse(quote)
   end
 
 end

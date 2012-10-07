@@ -8,12 +8,19 @@ $(function($) {
         el: $("#game"),
 
         initialize: function() {
-          app.game.fetch({success: this.start_game});
+            app.game.fetch({success: this.start_game});
         },
 
         start_game: function(model, resp) {
-            this.$("#left_option > img").attr("src", "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Official_portrait_of_Barack_Obama.jpg/220px-Official_portrait_of_Barack_Obama.jpg");
-            this.$("#right_option > img").attr("src", "http://reason.com/assets/mc/mriggs/MittRomneyProfilePic.jpg");
+            // Fill out the game info.
+            this.$("#quote").text(model.get('quote')['text']);
+            this.$("#left_option > img").attr("src", model.get('speaker')['url']);
+
+            // Default
+            var wrong_speaker_img_url = model.get('wrong_speaker')['url'] || "http://leslycorazon.wikispaces.com/file/view/head-silhouette-with-question-mark.png";
+
+            this.$("#right_option > img").attr("src", wrong_speaker_img_url);
+            this.$("#right_option > img").attr("alt", "Will Clark");
         }
     });
 });
