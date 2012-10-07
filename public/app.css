@@ -5,7 +5,7 @@
 #game_question {
   position: relative;
   top: 0px;
-  height: 80px;
+  height: 40px;
   font-size: 50px;
   text-align: center;
 }
@@ -47,7 +47,7 @@ img {
 }
 
 #left_option, #right_option {
-  height: 200px;
+  height: 250px;
 }
 
 #left_option {
