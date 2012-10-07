@@ -20,7 +20,7 @@ end
 
 wapo_quotes = WaPoQuoteApi.new()
 quotes = wapo_quotes.get_50_quotes()
-game_quote = quotes['objects'].sample().to_json()
+game_quote = quotes['objects'].sample()
 
 pp game_quote
 
