@@ -25,10 +25,10 @@ $(function($) {
             this.$("#right_option > img").attr("src", right_img_url);
 
             if (model.get('left_speaker')['correct']) {
-              this.$("#left_option > img").addClass('correct');
+              this.$("#left_option").addClass('correct');
             }
             else {
-              this.$("#right_option > img").addClass('correct');
+              this.$("#right_option").addClass('correct');
             }
         }
     });

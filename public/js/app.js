@@ -17,6 +17,18 @@ $(document).ready(function() {
      $(this).removeClass('hover');
   });
 
+  $('#left_option, #right_option').click(function(){
+
+    // A speaker was selected!
+
+    if ($(this).hasClass("correct")) {
+      $("#result").text("Right!");
+    }
+    else {
+      $("#result").text("Wrong!");
+    }
+  });
+
   // Kick things off.
   new app.AppView();
 });
