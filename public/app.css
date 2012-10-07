@@ -60,14 +60,15 @@ img {
 
 #left_option, #right_option {
   padding: 10px;
+  height: 250px;
 }
 
 #left_option {
-  margin-left: 30%;
+  margin-left: 200px;
 }
 
 #right_option {
-  margin-right: 30%;
+  margin-right: 200px;
 }
 
 .hover {
