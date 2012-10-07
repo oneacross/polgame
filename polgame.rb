@@ -57,6 +57,6 @@ get '/game.json' do
   game.to_json()
 end
 
-get '/game' do
+get '/' do
   erb :game
 end
