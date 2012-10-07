@@ -68,7 +68,15 @@ img {
 }
 
 #right_option {
-  margin-right: 200px;
+  margin-right: 100px;
+}
+
+#result {
+  font-size: 40px;
+}
+
+#more_info {
+  font-size: 30px;
 }
 
 .Republican.hover {

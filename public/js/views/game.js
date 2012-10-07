@@ -33,6 +33,9 @@ $(function($) {
             else {
               this.$("#right_option").addClass('correct');
             }
+
+            var full_text_url = model.get('quote')['transcript_source_url']
+            $("#more_info").append("Check out the <a href=\"" + full_text_url + "\">full text</a>");
         }
     });
 });

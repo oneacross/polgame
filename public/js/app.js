@@ -17,15 +17,19 @@ $(document).ready(function() {
      $(this).removeClass('hover');
   });
 
+  $("#more_info").hide();
+
   $('#left_option, #right_option').click(function(){
 
     // A speaker was selected!
 
     if ($(this).hasClass("correct")) {
       $("#result").text("You got it!");
+      $("#more_info").show();
     }
     else {
-      $("#result").text("Sorry, it was the other guy.");
+      $("#result").text("Nope, try the other guy.");
+      $("#more_info").hide();
     }
   });
 
