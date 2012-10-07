@@ -14,8 +14,8 @@ $(function($) {
         start_game: function(model, resp) {
             // Defaults
             var right_img_url = model.get('right_speaker')['url'] || "http://leslycorazon.wikispaces.com/file/view/head-silhouette-with-question-mark.png";
-            var speaker_width = model.get('left_speaker')['width'];
-            var speaker_height = model.get('left_speaker')['height'];
+            var left_party = model.get('left_speaker')['party'];
+            var right_party = model.get('right_speaker')['party'];
 
             // Fill out the game info.
             this.$("#quote").text(model.get('quote')['text']);
@@ -23,6 +23,9 @@ $(function($) {
             // Distinguish correct from incorrect.
             this.$("#left_option > img").attr("src", model.get('left_speaker')['url']);
             this.$("#right_option > img").attr("src", right_img_url);
+
+            this.$("#left_option").addClass(left_party);
+            this.$("#right_option").addClass(right_party);
 
             if (model.get('left_speaker')['correct']) {
               this.$("#left_option").addClass('correct');

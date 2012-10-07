@@ -71,6 +71,16 @@ img {
   margin-right: 200px;
 }
 
+.Republican.hover {
+  background: red;
+  border: solid 1px #999;
+}
+
+.Democrat.hover {
+  background: blue;
+  border: solid 1px #999;
+}
+
 .hover {
   background: yellow;
   border: solid 1px #999;
