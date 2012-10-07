@@ -2,6 +2,24 @@
   position: absolute;
 }
 
+#next_button {
+	display: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	font-size: 20px;
+	padding: 0.5em 2em;
+	border-radius: 0.5em;
+	font-weight: bold;
+	border: none;
+	background-color: #475E72;
+	color: white;
+	cursor: pointer;
+}
+
+#next_button:hover {
+	background-color: #222D37;
+}
+
 #game_question {
   position: relative;
   top: 0px;

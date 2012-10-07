@@ -35,7 +35,8 @@ $(function($) {
             }
 
             var full_text_url = model.get('quote')['transcript_source_url']
-            $("#more_info").append("Check out the <a href=\"" + full_text_url + "\">full text</a>");
+            $("#more_info").prepend("Check out the <a href=\"" + full_text_url + "\">full text</a>");
+			$("#next_button").show();
         }
     });
 });

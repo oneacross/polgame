@@ -2,6 +2,10 @@
 var app = app || {};
 
 $(document).ready(function() {
+	$("#next_button").click(function () {
+		window.location.reload();
+	});
+
 
   $("#game").height($(window).height());
 
