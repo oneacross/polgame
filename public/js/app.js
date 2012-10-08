@@ -28,11 +28,11 @@ $(document).ready(function() {
     // A speaker was selected!
 
     if ($(this).hasClass("correct")) {
-      $("#result").text("You got it!");
+      $("#message").text("You got it!");
       $("#more_info").show();
     }
     else {
-      $("#result").text("Nope, try the other guy.");
+      $("#message").text("Nope, try the other guy.");
       $("#more_info").hide();
     }
   });

@@ -1,25 +1,13 @@
+/* Enclosing div */
 #game {
   position: absolute;
 }
 
-#next_button {
-	display: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	font-size: 20px;
-	padding: 0.5em 2em;
-	border-radius: 0.5em;
-	font-weight: bold;
-	border: none;
-	background-color: #475E72;
-	color: white;
-	cursor: pointer;
-}
-
-#next_button:hover {
-	background-color: #222D37;
-}
-
+/* The game div is split up into:
+ *   game_question
+ *   quote_box
+ *   answer
+ */
 #game_question {
   position: relative;
   top: 0px;
@@ -32,6 +20,15 @@
   height: 45%;
 }
 
+#answer {
+    height: 250px;
+}
+
+/* The quote_box is split into:
+ *  left_quote
+ *  quote
+ *  right_quote
+ */
 #left_quote {
   display: inline-block;
   font-size: 150px;
@@ -55,41 +52,51 @@
   width: 9%;
 }
 
+
+#next_button {
+	display: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	font-size: 20px;
+	padding: 0.5em 2em;
+	border-radius: 0.5em;
+	font-weight: bold;
+	border: none;
+	background-color: #475E72;
+	color: white;
+	cursor: pointer;
+}
+
+#next_button:hover {
+	background-color: #222D37;
+}
+
 div {
   margin: 0;
   padding: 0;
 }
 
 img {
-  max-height: 100%;
-}
-
-/*
-.img-row {
-  clear: both;
-  text-align: center;
-  margin: 0 auto;
-}
-*/
-
-#option_box {
-  height: 250px;
+  max-height: 90%;
 }
 
 #left_option, #right_option {
   padding: 10px;
-  height: 250px;
+  width: 230px;
+  display: inline-block;
 }
 
 #left_option {
   margin-left: 200px;
 }
 
-#right_option {
-  margin-right: 100px;
+#result {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 60px
 }
 
-#result {
+#message {
   font-size: 40px;
 }
 
@@ -110,6 +117,7 @@ img {
 .hover {
   background: yellow;
   border: solid 1px #999;
+  cursor: pointer;
 }
 
 /*
