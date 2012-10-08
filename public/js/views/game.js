@@ -24,6 +24,10 @@ $(function($) {
             this.$("#left_option > img").attr("src", model.get('left_speaker')['url']);
             this.$("#right_option > img").attr("src", right_img_url);
 
+            // Set the image's bounding div width
+            this.$("#left_option").attr("width", this.$("#left_option > img").attr("width"));
+            this.$("#right_option").attr("width", this.$("#right_option > img").attr("width"));
+
             this.$("#left_option").addClass(left_party);
             this.$("#right_option").addClass(right_party);
 
