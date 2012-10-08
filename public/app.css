@@ -89,11 +89,15 @@ img {
   margin-left: 130px;
 }
 
+#right_option {
+    margin-left: 50px;
+}
+
 #result {
   display: inline-block;
   vertical-align: top;
-  margin-top: 60px
-  margin-left: 40px
+  margin-top: 60px;
+  margin-left: 40px;
 }
 
 #message {
