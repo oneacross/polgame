@@ -6,17 +6,8 @@ require 'sinatra'
 require 'json'
 require 'redis'
 require "httparty"
-require 'quote'
 require 'speaker'
 require 'game'
-
-class WaPoQuoteApi
-  include HTTParty
-
-  def get_quotes(count=50)
-    response = self.class.get("http://api.washingtonpost.com/politics/transcripts/api/v1/statement/?key=#{ENV['WAPO_API_KEY']}&limit=#{count}")
-  end
-end
 
 NUMBER_OF_QUOTES = 100
 
@@ -37,9 +28,7 @@ get '/game.json' do
   content_type :json
 
   if (cached_results.empty?)
-    # Get the last 50 quotes from the API
-    wapo_quotes = WaPoQuoteApi.new()
-    quotes = wapo_quotes.get_quotes(NUMBER_OF_QUOTES)
+    quotes = HTTParty.get("http://api.washingtonpost.com/politics/transcripts/api/v1/statement/?key=#{ENV['WAPO_API_KEY']}&limit=#{NUMBER_OF_QUOTES}")
 
     # Randomly pick one
     game_quote = quotes['objects'].sample()
