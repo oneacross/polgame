@@ -7,7 +7,6 @@ require 'json'
 require 'redis'
 require "httparty"
 require 'speaker'
-require 'game'
 
 NUMBER_OF_QUOTES = 100
 
@@ -46,12 +45,11 @@ get '/game.json' do
   correct_speaker = Speaker.get_speaker(speakers_db, game_quote['speaker']['id'])
   correct_speaker['correct'] = true
   wrong_speaker = Speaker.get_wrong_speaker(speakers_db, game_quote['speaker']['id'])
-
   left_speaker, right_speaker = [correct_speaker, wrong_speaker].shuffle()
 
-  game = WhoSaidItGame.new(game_quote, left_speaker, right_speaker)
-
-  game.to_json()
+  { :quote => game_quote,
+    :left_speaker => left_speaker,
+    :right_speaker => right_speaker }.to_json()
 end
 
 get '/' do
