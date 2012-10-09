@@ -47,9 +47,7 @@ get '/game.json' do
   correct_speaker['correct'] = true
   wrong_speaker = Speaker.get_wrong_speaker(speakers_db, game_quote['speaker']['id'])
 
-  speakers = [correct_speaker, wrong_speaker].shuffle()
-  left_speaker = speakers[0]
-  right_speaker = speakers[1]
+  left_speaker, right_speaker = [correct_speaker, wrong_speaker].shuffle()
 
   game = WhoSaidItGame.new(game_quote, left_speaker, right_speaker)
 
