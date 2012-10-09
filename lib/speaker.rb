@@ -18,6 +18,8 @@ class Speaker
       spkr['wapo_api'] == speaker_id.to_i
     end.first
 
+    speaker['correct'] = true
+
     speaker
   end
 
@@ -25,7 +27,5 @@ class Speaker
     speaker = speakers().select do |spkr|
       spkr['wapo_api'] != speaker_id.to_i
     end.sample
-
-    speaker
   end
 end

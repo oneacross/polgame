@@ -3,8 +3,6 @@
 $LOAD_PATH << "lib"
 
 require 'sinatra'
-require 'json'
-require 'redis'
 require "httparty"
 require 'speaker'
 
@@ -31,9 +29,10 @@ get '/game.json' do
     game_quote['text'] = "#{game_quote['text'][0, 300]} ..."
   end
 
-  correct_speaker = Speaker.get_speaker(game_quote['speaker']['id'])
-  correct_speaker['correct'] = true
-  wrong_speaker = Speaker.get_wrong_speaker(game_quote['speaker']['id'])
+  correct_speaker_id = game_quote['speaker']['id']
+
+  correct_speaker = Speaker.get_speaker(correct_speaker_id)
+  wrong_speaker = Speaker.get_wrong_speaker(correct_speaker_id)
   left_speaker, right_speaker = [correct_speaker, wrong_speaker].shuffle()
 
   { :quote => game_quote,
