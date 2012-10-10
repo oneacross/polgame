@@ -27,6 +27,7 @@ class QuoteController
     else
       result = get_quotes()
       @cache.set('quotes', result)
+      quotes = result
     end
 
     quote = quotes.sample()
