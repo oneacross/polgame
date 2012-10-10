@@ -10,18 +10,28 @@ class QuoteController
       return response['objects']
   end
 
+  def shorten(quote)
+
+    # Shorten the quote to 300 chars.
+    if quote['text'].length() > 300
+      quote['text'] = "#{quote['text'][0, 300]} ..."
+    end
+
+    return quote
+  end
+
   def get_random_quote()
 
     if result = @cache.get('quotes')
-      puts "Grabbed from cache!"
       quotes = result
     else
-      puts "Was not in cache"
       result = get_quotes()
       @cache.set('quotes', result)
     end
 
-    quotes.sample()
+    quote = quotes.sample()
+
+    return shorten(quote)
   end
 
 end
