@@ -2,10 +2,6 @@
 var app = app || {};
 
 $(document).ready(function() {
-	$("#next_button").click(function () {
-		window.location.reload();
-	});
-
 
   $("#game").height($(window).height());
 
@@ -37,7 +33,14 @@ $(document).ready(function() {
     }
   });
 
-  // Kick things off.
-  new app.AppView();
+  var view = new app.AppView();
+
+  // Kick things off
+  view.new_game();
+
+	$("#next_button").click(function () {
+    view.new_game();
+	});
+
 });
 

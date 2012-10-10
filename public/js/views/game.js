@@ -7,7 +7,11 @@ $(function($) {
 
         el: $("#game"),
 
-        initialize: function() {
+        new_game: function() {
+            $("#more_info").hide();
+            $("#message").text("");
+            $("#left_option").removeClass('correct Democrat Republican');
+            $("#right_option").removeClass('correct Democrat Republican');
             app.game.fetch({success: this.start_game});
         },
 
@@ -39,8 +43,8 @@ $(function($) {
             }
 
             var full_text_url = model.get('quote')['transcript_source_url']
-            $("#more_info").prepend("Check out the <a href=\"" + full_text_url + "\">full text</a><br/>");
-			$("#next_button").show();
+            $("#more_info > a").attr("href", full_text_url);
+            $("#next_button").show();
         }
     });
 });
