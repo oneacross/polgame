@@ -5,39 +5,19 @@ $LOAD_PATH << "lib"
 require 'sinatra'
 require 'json'
 require "httparty"
-require 'speaker'
 require 'dalli'
+require 'speaker'
+require 'quote'
 
 NUMBER_OF_QUOTES = 10
 
 set :cache, Dalli::Client.new
-
-def get_quotes()
-    response = HTTParty.get("http://api.washingtonpost.com/politics/transcripts/api/v1/statement/?key=#{ENV['WAPO_API_KEY']}&limit=#{NUMBER_OF_QUOTES}")
-    return response['objects']
-end
-
-def cached(cache_key)
-
-  if result = settings.cache.get(cache_key)
-    return result
-  else
-    result = yield
-    settings.cache.set(cache_key, result)
-
-    return result
-  end
-end
+set :quote_controller, QuoteController.new(settings.cache)
 
 get '/game.json' do
   content_type :json
 
-  quotes = cached('quotes') do
-    get_quotes()
-  end
-
-  # Randomly pick one
-  game_quote = quotes.sample()
+  game_quote = settings.quote_controller.get_random_quote()
 
   # Shorten the quote to 300 chars.
   if game_quote['text'].length() > 300
