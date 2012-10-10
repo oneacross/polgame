@@ -1,7 +1,7 @@
-class Speaker
+class SpeakerController
 
-  def self.speakers()
-    [
+  def initialize()
+    @speakers = [
       {"wapo_api" => 3,"first_name" => "Chris","last_name"=>"Christie","party"=>"Republican","url"=>"http://www.state.nj.us/governor/library/photos/gov_christie.jpg","width"=>170,"height"=>242},
       {"wapo_api" => 5,"first_name" => "Clint","last_name"=>"Eastwood","party"=>"Republican","url"=>"http://www.newsmax.com/Newsmax/files/1a/1a81ded4-e973-42ee-9079-85da4547dada.jpg","width"=>170,"height"=>242},
       {"wapo_api" => 7,"first_name" => "Jim","last_name"=>"Lehrer","party"=>"","url"=>"http://www.pbs.org/newshour/aboutus/images/photo_bio_lehrer.jpg","width"=>170,"height"=>242},
@@ -12,9 +12,8 @@ class Speaker
     ]
   end
 
-  # API
-  def self.get_speaker(speaker_id)
-    speaker = speakers().select do |spkr|
+  def get_speaker(speaker_id)
+    speaker = @speakers.select do |spkr|
       spkr['wapo_api'] == speaker_id.to_i
     end.first
 
@@ -23,9 +22,19 @@ class Speaker
     speaker
   end
 
-  def self.get_wrong_speaker(speaker_id)
-    speaker = speakers().select do |spkr|
+  def get_wrong_speaker(speaker_id)
+    speaker = @speakers.select do |spkr|
       spkr['wapo_api'] != speaker_id.to_i
     end.sample
+  end
+
+  # API
+  def get_speaker_pair(quote)
+    speaker_id = quote['speaker']['id']
+
+    correct_speaker = get_speaker(speaker_id)
+    wrong_speaker = get_wrong_speaker(speaker_id)
+
+    return [correct_speaker, wrong_speaker].shuffle()
   end
 end

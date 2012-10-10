@@ -13,17 +13,15 @@ NUMBER_OF_QUOTES = 10
 
 set :cache, Dalli::Client.new
 set :quote_controller, QuoteController.new(settings.cache)
+set :speaker_controller, SpeakerController.new()
 
 get '/game.json' do
   content_type :json
 
   quote = settings.quote_controller.get_random_quote()
+  speakers = settings.speaker_controller.get_speaker_pair(quote)
 
-  correct_speaker_id = quote['speaker']['id']
-
-  correct_speaker = Speaker.get_speaker(correct_speaker_id)
-  wrong_speaker = Speaker.get_wrong_speaker(correct_speaker_id)
-  left_speaker, right_speaker = [correct_speaker, wrong_speaker].shuffle()
+  left_speaker, right_speaker = speakers
 
   { :quote => quote,
     :left_speaker => left_speaker,
