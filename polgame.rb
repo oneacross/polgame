@@ -12,12 +12,11 @@ require 'quote'
 NUMBER_OF_QUOTES = 10
 
 set :cache, Dalli::Client.new
-set :quote_controller, QuoteController.new(settings.cache)
 
 get '/game.json' do
   content_type :json
 
-  quote = settings.quote_controller.get_random_quote()
+  quote = QuoteController.get_random_quote(settings.cache)
   speakers = SpeakerController.get_speaker_pair(quote)
 
   left_speaker, right_speaker = speakers
