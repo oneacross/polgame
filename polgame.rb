@@ -4,7 +4,6 @@ $LOAD_PATH << "lib"
 
 require 'sinatra'
 require 'json'
-require "httparty"
 require 'dalli'
 require 'speaker'
 require 'quote'

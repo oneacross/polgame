@@ -1,3 +1,4 @@
+require "httparty"
 
 class QuoteController
 
